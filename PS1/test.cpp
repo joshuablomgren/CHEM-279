@@ -3,6 +3,8 @@
 int main(){
     // Create a GoldCluster object and print the geometry
     GoldCluster cluster("example.txt");
+
+    cout << "Input Geometry: " << endl;
     cluster.print_geometry();
 
     // If non-gold atoms are present or file format is incorrect, return error
@@ -21,17 +23,30 @@ int main(){
         }
     }
 
-    // Test Distance Calculation
-    double distance = cluster.calcDistance(0, 1);
-    cout << "Distance between atoms 0 and 1: " << distance << endl;
-
-    // Test LJ Calculation
-    double lj = cluster.calcLJ(0, 1);
-    cout << "LJ energy between atoms 0 and 1: " << lj << endl;
-
     // Test Total Energy Calculation
     double total_energy = cluster.calcTotalEnergy();
-    cout << "Total energy of the cluster: " << total_energy << endl;
+    cout << "LJ energy of the cluster: " << total_energy << endl;
+
+    // Test Analytical Force Calculation
+    mat forces_analytical = cluster.calcAnalyticalForces();
+    cout << "Analytical Forces: " << endl;
+    cout << forces_analytical << endl;
+
+    // Test Forward Difference Force Calculation
+    mat forces_forward = cluster.forwardDifference(0.01);
+    cout << "Forward Difference Forces (h = 0.01): " << endl;
+    cout << forces_forward << endl;
+
+    // Test Central Difference Force Calculation
+    mat forces_central = cluster.centralDifference(0.01);
+    cout << "Central Difference Forces (h = 0.01): " << endl;
+    cout << forces_central << endl;
+
+    // Separate the output
+    cout << "----------------------------------------" << endl;
+
+    // Test steepest descent
+    mat coords_min = cluster.steepestDescent(0.01, 1e-10);
 
     return 0;
 }
