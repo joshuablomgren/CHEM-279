@@ -16,4 +16,4 @@ test: gold_lj
 all: gold_lj test
 
 clean:
-	rm -f *.o test
+	rm -f *.o test 

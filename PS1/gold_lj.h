@@ -20,7 +20,6 @@ class GoldCluster {
         int num_atoms;                   // Number of atoms in the cluster
         vector<int> z_vals;              // Atomic numbers of the atoms
         mat coords;                      // Cartesian coordinates of the atoms
-        mat initial_coords;              // Save initial coordinates of the atoms
 
         // Constructor
         GoldCluster(const char* filename);

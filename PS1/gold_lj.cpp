@@ -32,9 +32,6 @@ GoldCluster::GoldCluster(const char* filename) {
 
     // Close the file
     infile.close();
-
-    // Save the initial coordinates
-    initial_coords = coords;
 }
 
 /**
@@ -49,8 +46,8 @@ void GoldCluster::print_geometry() {
 
     // Print the atomic numbers and coordinates
     for (int i = 0; i < num_atoms; i++) {
-        cout << z_vals[i] << setw(8) << coords(i, 0) << setw(8) << coords(i, 1) 
-        << setw(8) << coords(i, 2) << endl;
+        cout << z_vals[i] << setw(12) << coords(i, 0) << setw(12) << coords(i, 1) 
+        << setw(12) << coords(i, 2) << endl;
     }
 }
 
@@ -287,10 +284,10 @@ mat GoldCluster::steepestDescent(double stepsize, double tol) {
     cout << "Initial Geometry before Steepest Descent:" << endl;
     print_geometry();
     cout << "Initial LJ Energy: " << old_energy << endl;
-    cout << "Initial Norm of Forces: " << norm(force_matrix) << endl << endl;
+    cout << "Initial Norm of Forces: " << norm(force_matrix, "fro") << endl << endl;
 
     // Steepest descent loop
-    while (norm(force_matrix) > tol and iter < 1000) {
+    while (norm(force_matrix, "fro") > tol and iter < 1000) {
         // Save the old coordinates
         old_coords = coords;
         // Calculate the new coordinates
@@ -321,7 +318,7 @@ mat GoldCluster::steepestDescent(double stepsize, double tol) {
     cout << "Final Geometry after Steepest Descent:" << endl;
     print_geometry();
     cout << "Final LJ Energy: " << new_energy << endl;
-    cout << "Final Norm of Forces: " << norm(force_matrix) << endl;
+    cout << "Final Norm of Forces: " << norm(force_matrix, "fro") << endl;
     cout << "Number of Iterations: " << iter << endl;
 
     // Return the final coordinates
