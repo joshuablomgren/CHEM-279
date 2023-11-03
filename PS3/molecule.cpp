@@ -32,7 +32,6 @@ void BasisFunction::calcNormConstants() {
 
     // Calculate the normalization constants
     norm_constants = {1.0 / sqrt(selfOverlap_1), 1.0 / sqrt(selfOverlap_2), 1.0 / sqrt(selfOverlap_3)};
-    cout << "Norm constants: " << norm_constants << endl;
 }
 
 /**
@@ -55,7 +54,7 @@ Molecule::Molecule(const char* filename) {
     atomicNumbers.resize(nAtoms);
     coordinates.resize(nAtoms, 3);
 
-    std::string line;
+    std::string line; 
     getline(infile, line); // Skip the rest of the line
 
     for (int i = 0; i < nAtoms; i++) {

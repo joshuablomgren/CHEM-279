@@ -17,12 +17,6 @@ int main(int argc, char* argv[]) {
 
     cout << "----------------------------------------" << endl << endl;
     
-    // Overlap 3D 
-    double overlap_3D_1 = overlapIntegral3D(molecule.basisFunctionsList[0].center, molecule.basisFunctionsList[1].center, molecule.basisFunctionsList[0].exponents[0], molecule.basisFunctionsList[1].exponents[0], molecule.basisFunctionsList[0].lmn, molecule.basisFunctionsList[1].lmn);
-    cout << "Overlap 3D: " << overlap_3D_1 << endl;
-
-    double overlap_3d_2 = overlapIntegral3D(molecule.basisFunctionsList[0].center, molecule.basisFunctionsList[0].center, molecule.basisFunctionsList[0].exponents[0], molecule.basisFunctionsList[0].exponents[0], molecule.basisFunctionsList[0].lmn, molecule.basisFunctionsList[0].lmn);
-
     // Test contracted overlap integral
     mat overlap_mat = calcOverlapMatrix(molecule);
     cout << "Overlap matrix:\n" << overlap_mat << endl;
