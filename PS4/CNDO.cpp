@@ -279,6 +279,8 @@ mat CNDO::calcFockMat(mat densityMat) {
  * 
  * This function calculates the core Hamiltonian matrix similar to the Fock
  * matrix, but independent of electron density.
+ * 
+ * @return mat The core Hamiltonian matrix
  */
 mat CNDO::calcHCoreMat() {
     mat hCoreMat = arma::zeros(molecule.nBasisFunctions, molecule.nBasisFunctions);
@@ -324,6 +326,7 @@ mat CNDO::calcHCoreMat() {
  * for either the alpha or beta electrons.
  * 
  * @param coeffMat The coefficient matrix to use (alpha or beta)
+ * @param type The type of matrix (alpha or beta)
  * 
  * @return mat The density matrix
  */
